@@ -12,6 +12,8 @@
     "db:studio": "prisma studio"
   },
   "dependencies": {
+    "@libsql/client": "0.8.1",
+    "@prisma/adapter-libsql": "6.19.3",
     "@prisma/client": "6.19.3",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.0",
