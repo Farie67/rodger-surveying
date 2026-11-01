@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Rodger Surveying — Design tokens
+   Tailwind CSS v4 uses CSS-first configuration. Every token below is
+   available as a utility, e.g. bg-brand-navy, text-brand-red, shadow-card.
+------------------------------------------------------------------- */
+@theme {
+  --font-sans: var(--font-plus-jakarta), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-display: var(--font-plus-jakarta), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+
+  --color-brand-navy: #101c32;
+  --color-brand-navy-800: #172642;
+  --color-brand-navy-700: #1f3151;
+  --color-brand-red: #d62828;
+  --color-brand-red-dark: #b71f1f;
+  --color-brand-light: #f3f5f8;
+  --color-brand-slate: #64748b;
+  --color-brand-line: #e2e7ef;
+
+  --shadow-card: 0 20px 50px -30px rgb(16 28 50 / 0.35);
+  --shadow-lift: 0 30px 70px -35px rgb(16 28 50 / 0.45);
+
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: var(--color-brand-navy);
+  }
+
+  *,
+  ::before,
+  ::after {
+    border-color: var(--color-brand-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-brand-red);
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-red);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Shared horizontal rhythm across every page section. */
+  .container-shell {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-shell {
+      padding-inline: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-shell {
+      padding-inline: 3rem;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

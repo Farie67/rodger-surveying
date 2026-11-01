@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Enquiry {
+  id                     String   @id @default(uuid())
+  reference              String   @unique
+  fullName               String
+  companyName            String?
+  phone                  String
+  email                  String
+  province               String
+  town                   String
+  serviceRequired        String
+  projectSize            String
+  description            String
+  commencementDate       String
+  additionalRequirements String?
+  status                 String   @default("New")
+  createdAt              DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([status])
+}
