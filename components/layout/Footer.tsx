@@ -1,26 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight, Clock, MapPin, Phone } from "lucide-react";
 
-import { services } from "@/lib/services";
-
-const quickLinks = [
-  { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
-  { label: "Our Services", href: "/services" },
-  { label: "Projects", href: "/projects" },
-  { label: "Equipment", href: "/equipment" },
-  { label: "Our Team", href: "/team" },
-  { label: "Contact", href: "/contact" },
-];
-
-const serviceLinks = [
-  ...services.map((service) => ({
-    label: service.title,
-    href: `/services/${service.slug}`,
-  })),
-  { label: "Equipment Hire", href: "/equipment" },
-];
-
 export function Footer() {
   const year = new Date().getFullYear();
 
@@ -44,7 +24,7 @@ export function Footer() {
       <div className="absolute inset-x-0 top-0 h-[3px] bg-brand-red" />
 
       <div className="container-shell relative">
-        <div className="grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.35fr_0.7fr_1fr_1.2fr] lg:gap-10 lg:py-20">
+        <div className="grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-[1.35fr_0.9fr_1.1fr] lg:gap-12 lg:py-20">
           {/* Brand */}
           <div>
             <Link
@@ -86,52 +66,36 @@ export function Footer() {
             </Link>
           </div>
 
-          {/* Quick links */}
-          <nav aria-label="Quick links">
-            <h2 className="text-[0.6rem] font-bold uppercase tracking-[0.22em] text-white/40">
-              Quick Links
+          {/* Start a project CTA */}
+          <div className="border-t border-white/10 pt-8 md:border-l md:border-t-0 md:pl-8 md:pt-0 lg:pl-10">
+            <p className="text-[0.6rem] font-bold uppercase tracking-[0.22em] text-white/40">
+              Start a project
+            </p>
+            <h2 className="mt-4 max-w-[17rem] font-display text-2xl font-bold leading-8 tracking-[-0.03em] text-white">
+              Ready to start your next project?
             </h2>
-            <ul className="mt-6 space-y-3.5">
-              {quickLinks.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="group inline-flex items-center gap-2 text-sm text-white/65 transition-colors hover:text-white"
-                  >
-                    <span className="h-px w-0 bg-brand-red transition-all duration-300 ease-premium group-hover:w-3" />
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          {/* Services */}
-          <nav aria-label="Services">
-            <h2 className="text-[0.6rem] font-bold uppercase tracking-[0.22em] text-white/40">
-              Our Services
-            </h2>
-            <ul className="mt-6 space-y-3.5">
-              {serviceLinks.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="group inline-flex items-center gap-2 text-sm text-white/65 transition-colors hover:text-white"
-                  >
-                    <span className="h-px w-0 bg-brand-red transition-all duration-300 ease-premium group-hover:w-3" />
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+            <p className="mt-3 max-w-xs text-sm leading-6 text-white/55">
+              Get in touch with our team today.
+            </p>
+            <Link
+              href="/quote"
+              className="group mt-6 inline-flex items-center gap-2 text-[0.6rem] font-bold uppercase tracking-[0.14em] text-brand-red transition-colors hover:text-white"
+            >
+              Request a quote
+              <ArrowUpRight
+                aria-hidden="true"
+                className="size-3.5 transition-transform duration-300 ease-premium group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                strokeWidth={1.75}
+              />
+            </Link>
+          </div>
 
           {/* Contact */}
-          <div>
+          <div className="border-t border-white/10 pt-8 md:col-span-2 lg:col-span-1 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
             <h2 className="text-[0.6rem] font-bold uppercase tracking-[0.22em] text-white/40">
               Contact Us
             </h2>
-            <address className="mt-6 space-y-5 not-italic">
+            <address className="mt-6 grid gap-5 not-italic sm:grid-cols-2 lg:grid-cols-1">
               <div className="flex gap-3">
                 <MapPin
                   aria-hidden="true"
