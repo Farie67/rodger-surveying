@@ -2,6 +2,9 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// DATABASE_URL is used by the Prisma CLI for local schema management.
+// At runtime, lib/prisma.ts connects through @prisma/adapter-libsql using
+// TURSO_DATABASE_URL (local file or remote libsql:// URL) and TURSO_AUTH_TOKEN.
 datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
