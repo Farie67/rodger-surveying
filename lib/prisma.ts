@@ -19,6 +19,7 @@ function createPrismaClient() {
 
 export const prisma = globalForPrisma.prisma ?? createPrismaClient();
 
-if (process.env.NODE_ENV !== "production") {
-  globalForPrisma.prisma = prisma;
-}
+// Cache the client in every environment. In production this prevents
+// separate server bundles from creating additional Prisma instances, and in
+// development it survives Next.js hot reloads.
+globalForPrisma.prisma = prisma;
